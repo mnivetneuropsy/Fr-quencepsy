@@ -1377,30 +1377,12 @@ r_podcast_tdah:{
 
 <h3 style="margin-top:20px">Les jeux</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
-  <div style="text-align:center">
-    <img src="images/img_jeu1.jpg" alt="Jeu 1" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu1.jpg</div>
-  </div>
-  <div style="text-align:center">
-    <img src="images/img_jeu2.jpg" alt="Jeu 2" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu2.jpg</div>
-  </div>
-  <div style="text-align:center">
-    <img src="images/img_jeu3.jpg" alt="Jeu 3" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu3.jpg</div>
-  </div>
-  <div style="text-align:center">
-    <img src="images/img_jeu4.jpg" alt="Jeu 4" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu4.jpg</div>
-  </div>
-  <div style="text-align:center">
-    <img src="images/img_jeu5.jpg" alt="Jeu 5" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu5.jpg</div>
-  </div>
-  <div style="text-align:center">
-    <img src="images/img_jeu6.jpg" alt="Jeu 6" style="width:100%;border-radius:12px;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.05)" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div style="display:none;width:100%;aspect-ratio:1;background:rgba(255,255,255,.06);border-radius:12px;border:2px dashed rgba(255,255,255,.15);align-items:center;justify-content:center;flex-direction:column;font-size:11px;color:rgba(255,255,255,.35)">📷<br>img_jeu6.jpg</div>
-  </div>
+  <img src="images/img_jeu1.jpg" alt="Jeu 1" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
+  <img src="images/img_jeu2.jpg" alt="Jeu 2" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
+  <img src="images/img_jeu3.jpg" alt="Jeu 3" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
+  <img src="images/img_jeu4.jpg" alt="Jeu 4" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
+  <img src="images/img_jeu5.jpg" alt="Jeu 5" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
+  <img src="images/img_jeu6.jpg" alt="Jeu 6" style="width:100%;border-radius:12px;object-fit:cover" onerror="this.style.opacity=0">
 </div>
 `
 }
@@ -2137,8 +2119,13 @@ addBubble({id:"res_d_mai_har",     x:HUB_RESOURCES.x-240, y:HUB_RESOURCES.y+900,
 addBubble({id:"res_d_mai_bi",      x:HUB_RESOURCES.x-40,  y:HUB_RESOURCES.y+900, text:"🎥 JMTB 2026 — Trouble bipolaire",      color:"c-video",   size:"sz-sm", resource:"r_video_bipolaire_jmtb"});
 addBubble({id:"res_d_mai_sui",     x:HUB_RESOURCES.x+160, y:HUB_RESOURCES.y+900, text:"🎙 Conduites suicidaires & enfance",     color:"c-podcast", size:"sz-sm", resource:"r_podcast_suicide_enfance"});
 
-// All resources under res_d_mai
+// Only books, podcasts and videos under res_d_mai — no events
 Object.entries(RESOURCES).forEach(([rid,r],i)=>{
+  // Skip events (ev_...) and tools (r_brisglace, r_roue_)
+  if(rid.startsWith('ev_') || rid==='r_brisglace' || rid==='r_roue_emotions') return;
+  // Skip if already added manually above
+  const alreadyAdded = ['r_book_numerique','r_podcast_nuit_crime','r_podcast_burnout','r_podcast_tdah_inter','r_podcast_jv_cerveau','r_podcast_psychotrauma','r_podcast_harcelement_rfi','r_video_bipolaire_jmtb','r_podcast_suicide_enfance'];
+  if(alreadyAdded.includes(rid)) return;
   const col=i%2, row=Math.floor(i/2);
   const rx=HUB_RESOURCES.x-610+col*340, ry=HUB_RESOURCES.y+750+row*210;
   const bid="res_d_item_"+rid;
